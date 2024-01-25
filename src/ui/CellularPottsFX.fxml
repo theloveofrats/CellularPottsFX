@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="topPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.UIController">
+  <children>
+    <MenuBar layoutX="0.0" layoutY="2.0" prefWidth="600.0">
+      <menus>
+        <Menu fx:id="fileMenu" mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem fx:id="optSave" mnemonicParsing="false" text="Save Configuration" />
+            <MenuItem fx:id="optLoad" mnemonicParsing="false" text="Load Configuration" />
+            <MenuItem fx:id="optImg" mnemonicParsing="false" onAction="#openImageAsEnvironment" text="Open Environment Image" />
+            <MenuItem fx:id="optClose" mnemonicParsing="false" text="Close" />
+          </items>
+        </Menu>
+        <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem fx:id="optAbout" mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <Pane layoutX="1.0" layoutY="26.0" prefHeight="374.0" prefWidth="599.0">
+      <children>
+        <TabPane layoutX="0.0" layoutY="0.0" prefHeight="374.0" prefWidth="599.0" tabClosingPolicy="UNAVAILABLE">
+          <tabs>
+            <Tab text="Simulation properties">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <Rectangle arcHeight="5.0" arcWidth="5.0" height="160.00010681152344" layoutX="10.0" layoutY="10.0" opacity="0.79" strokeType="INSIDE" width="165.0">
+                      <fill>
+                        <Color blue="0.800" green="0.894" red="1.000" fx:id="x3" />
+                      </fill>
+                      <stroke>
+                        <Color blue="0.624" green="0.624" red="0.624" fx:id="x4" />
+                      </stroke>
+                    </Rectangle>
+                    <Label layoutX="41.0" layoutY="71.0" prefWidth="51.0" text="Height:">
+                      <font>
+                        <Font size="14.0" fx:id="x1" />
+                      </font>
+                    </Label>
+                    <TextField id="width" fx:id="fldWidth" layoutX="97.0" layoutY="69.0" prefWidth="58.0" text="500" />
+                    <Label font="$x1" layoutX="41.0" layoutY="97.0" prefWidth="58.0" text="Width:" />
+                    <TextField fx:id="fldHeight" layoutX="97.0" layoutY="95.0" prefWidth="58.0" text="500" />
+                    <Button id="playButton" fx:id="btnPlay" layoutX="501.0" layoutY="304.0" mnemonicParsing="false" onAction="#btnPlayHandler" text="Play/Pause" />
+                    <Button id="playButton" fx:id="btnMake" layoutX="108.0" layoutY="137.0" mnemonicParsing="false" onAction="#btnMakeHandler" text="Make" />
+                    <Text layoutX="17.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stage maker">
+                      <font>
+                        <Font size="16.0" fx:id="x2" />
+                      </font>
+                    </Text>
+                    <Label font="$x1" layoutX="14.0" layoutY="194.0" prefWidth="95.9765625" text="Randomness:" />
+                    <TextField id="fldHeight" fx:id="fldTemperature" layoutX="115.0" layoutY="192.0" onAction="#btnTemperatureHandler" prefWidth="58.0" text="5" />
+                    <Label font="$x1" layoutX="14.0" layoutY="234.0" prefWidth="95.9765625" text="Taxis bias:" />
+                    <TextField id="fldHeight" fx:id="fldChemotax" layoutX="115.0" layoutY="232.0" onAction="#btnTaxisHandler" prefWidth="58.0" text="0" />
+                    <TextField id="width" fx:id="pathToRecordFile" layoutX="17.0" layoutY="302.0" onAction="#pathToRecordFileChanged" prefWidth="362.0" text="~/" />
+                    <CheckBox fx:id="recordBox" layoutX="18.0" layoutY="283.0" mnemonicParsing="false" onAction="#onClickRecordBox" text="Record" />
+                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x3" height="242.99998474121094" layoutX="197.0" layoutY="11.0" opacity="0.79" stroke="$x4" strokeType="INSIDE" width="381.0" />
+                    <Text font="$x2" layoutX="204.0" layoutY="32.0" scaleX="1.0" scaleY="0.9999946932007974" strokeType="OUTSIDE" strokeWidth="0.0" text="Extracellular environment" />
+                    <TableView fx:id="tvECMParams" editable="true" layoutX="210.0" layoutY="90.0" prefHeight="150.0" prefWidth="230.0">
+                      <columns>
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="115.0" text="Property" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="130.0" text="Value" />
+                      </columns>
+                    </TableView>
+                    <!--
+                    <ListView id="taggableList" fx:id="ecParams" layoutX="207.0" layoutY="111.0" prefHeight="130.0" prefWidth="129.0" />
+                    <Label font="$x1" layoutX="210.0" layoutY="94.0" prefWidth="165.0" text="Parameters" />
+                    <Label font="$x1" layoutX="346.0" layoutY="94.0" prefWidth="83.0" text="Values" />
+                    <ListView id="taggableList" fx:id="ecParamValues" layoutX="344.0" layoutY="111.0" prefHeight="130.0" prefWidth="129.0" />
+                    -->
+                    <Button id="playButton" fx:id="btnFill" layoutX="535.0" layoutY="222.0" mnemonicParsing="false" onAction="#btnFillHandler" text="Fill" />
+                    <ChoiceBox id="ddModel" fx:id="ddECModel" layoutX="315.0" layoutY="52.0" prefWidth="124.0">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ChoiceBox>
+                              <ListView fx:id="valveList" layoutX="450.0" layoutY="50.0" prefHeight="200.0" prefWidth="80.0" />
+                    <Label font="$x1" layoutX="207.0" layoutY="54.0" prefWidth="124.0" text="Model:" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Cell Types">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <Pane layoutX="7.0" layoutY="7.0" prefHeight="324.0" prefWidth="205.0">
+                      <children>
+                        <ListView fx:id="listCellTypes" layoutX="0.0" layoutY="0.0" onMouseClicked="#listSelectionHandler" prefHeight="324.0" prefWidth="205.0" />
+                      </children>
+                    </Pane>
+                    <ChoiceBox fx:id="ddModel" layoutX="384.0" layoutY="168.0" prefWidth="124.0">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ChoiceBox>
+                    <Label font="$x1" layoutX="224.0" layoutY="112.0" prefWidth="43.0" text="Area:" />
+                    <Label font="$x2" layoutX="221.0" layoutY="7.0" text="Cell Properties:" />
+                    <Button id="btnCellType" fx:id="btnNewCell" layoutX="488.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnNewCellHandler" text="New cell type" />
+                    <TextField fx:id="fldArea" layoutX="383.0" layoutY="110.0" onAction="#ReadCellFields" prefWidth="58.0" text="0" />
+                    <Label font="$x1" layoutX="224.0" layoutY="137.0" prefWidth="75.0" text="Perimeter:" />
+                    <TextField fx:id="fldPerimeter" layoutX="384.0" layoutY="137.0" onAction="#ReadCellFields" prefWidth="58.0" text="0" />
+                    <Label font="$x1" layoutX="384.0" layoutY="84.0" prefWidth="58.0" text="Resting" />
+                    <Label font="$x1" layoutX="450.0" layoutY="84.0" prefWidth="58.0" text="Stiffness" />
+                    <TextField fx:id="fldAreaStiffness" layoutX="449.0" layoutY="110.0" onAction="#ReadCellFields" prefWidth="58.0" text="0" />
+                    <TextField fx:id="fldPerimeterStiffness" layoutX="449.0" layoutY="135.0" onAction="#ReadCellFields" prefWidth="58.0" text="0" />
+                    <Label font="$x1" layoutX="225.0" layoutY="170.0" prefWidth="166.0" text="Biochemical Model:" />
+                    <TextField fx:id="cellNameField" layoutX="221.0" layoutY="35.0" onAction="#ReadCellFields" prefHeight="31.0" prefWidth="205.0" text="" />
+                    <Label font="$x1" layoutX="225.0" layoutY="204.0" prefWidth="157.0" text="Biophysical Model:" />
+                    <ChoiceBox fx:id="ddPhysical" layoutX="384.0" layoutY="202.0" prefWidth="124.0">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ChoiceBox>
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Model Parameters">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <TableView fx:id="tvModelParams" editable="true" layoutX="16.0" layoutY="40.0" prefHeight="260.0" prefWidth="271.0">
+                      <columns>
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="152.0" text="Property" />
+                        <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="117.0" text="Value" />
+                      </columns>
+                    </TableView>
+                    <!--
+                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x3" height="318.0" layoutX="8.0" layoutY="9.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
+                    <ListView id="taggableList" fx:id="paramsList" layoutX="14.0" layoutY="56.0" prefHeight="257.0" prefWidth="129.0" />
+                    <Label font="$x1" layoutX="17.0" layoutY="39.0" prefWidth="165.0" text="Parameters" />
+                    <Label font="$x1" layoutX="153.0" layoutY="39.0" prefWidth="83.0" text="Values" />
+                    <ListView id="taggableList" fx:id="paramValuesList" layoutX="151.0" layoutY="56.0" prefHeight="257.0" prefWidth="129.0" />
+                    -->
+                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="$x3" height="318.0" layoutX="306.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="282.0" />
+                    <Text font="$x2" layoutX="17.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biochemistry" />
+                    <Text font="$x2" layoutX="312.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Biophysics" />
+                    <ListView id="taggableList" fx:id="AdhesionLabels" layoutX="314.0" layoutY="56.0" prefHeight="111.0" prefWidth="129.0" />
+                    <Label font="$x1" layoutX="317.0" layoutY="39.0" prefWidth="165.0" text="Cell Type" />
+                    <Label font="$x1" layoutX="453.0" layoutY="39.0" prefWidth="83.0" text="Strength" />
+                    <ListView id="taggableList" fx:id="adhesionStrengthList" layoutX="451.0" layoutY="56.0" prefHeight="111.0" prefWidth="129.0" />
+                    <ListView id="taggableList" fx:id="biophysParamsList" layoutX="314.0" layoutY="193.0" prefHeight="121.0" prefWidth="129.0" />
+                    <Label font="$x1" layoutX="317.0" layoutY="176.0" prefWidth="165.0" text="Parameter" />
+                    <Label font="$x1" layoutX="453.0" layoutY="176.0" prefWidth="83.0" text="Value" />
+                    <ListView id="taggableList" fx:id="biophysValuesList" layoutX="451.0" layoutY="193.0" prefHeight="120.00009999999747" prefWidth="129.0" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Tags &amp; Microscopy">
+              <content>
+                <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                    <ChoiceBox fx:id="ddMicroscopy" layoutX="123.0" layoutY="16.0" prefWidth="118.0">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Item 1" />
+                          <String fx:value="Item 2" />
+                          <String fx:value="Item 3" />
+                        </FXCollections>
+                      </items>
+                    </ChoiceBox>
+                    <Label font="$x1" layoutX="14.0" layoutY="35.0" text="Light image:" />
+                    <Slider id="LEDslider" fx:id="LEDBrightness" layoutX="114.0" layoutY="53.0" max="250.0" value="125.0" />
+                    <ListView fx:id="taggableList" layoutX="14.0" layoutY="107.0" onMouseClicked="#TaggableSelectionHandler" prefHeight="219.0" prefWidth="200.0" />
+                    <Label font="$x1" layoutX="15.0" layoutY="87.0" text="Taggable objects" />
+                    <ColorPicker fx:id="tagColour" layoutX="421.0" layoutY="107.0" />
+                    <Label font="$x1" layoutX="319.0" layoutY="111.0" text="Tag colour:" />
+                    <Slider id="LEDslider" fx:id="laserBrightness" layoutX="348.0" layoutY="150.0" majorTickUnit="1000.0" max="10000.0" minorTickCount="0" value="0.0" />
+                    <Label font="$x1" layoutX="416.0" layoutY="250.0" text="Target Value:" />
+                    <TextField fx:id="fldPhotoactivationTarget" layoutX="515.0" layoutY="249.0" prefWidth="53.0" text="0" />
+                    <Button fx:id="btnPhotoactivate" layoutX="457.0" layoutY="280.0" mnemonicParsing="false" onAction="#OnPhotoactivate" text="Photoactivate!" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </Tab>
+          </tabs>
+        </TabPane>
+      </children>
+    </Pane>
+  </children>
+</AnchorPane>
